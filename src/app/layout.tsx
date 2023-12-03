@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className="bg-[url('/hero.jpg')] bg-cover bg-black bg-blend-color bg-opacity-95 bg-no-repeat bg-center min-h-screen">
+        {children}
+      </body>
     </html>
   );
 }
