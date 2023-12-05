@@ -2,12 +2,33 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import TrainerTestimonials from '@/components/TrainerTestimonials';
 import { Button, buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
+import { ActivityIcon, SmileIcon, CheckSquareIcon } from 'lucide-react';
 
 export default function Home() {
+  const perks = [
+    {
+      name: 'Easy Progress Tracking',
+      Icon: ActivityIcon,
+      description:
+        'Get your assets delivered to your email in seconds and download them right away.',
+    },
+    {
+      name: 'User Friendly Interface',
+      Icon: SmileIcon,
+      description:
+        'Every asset on our platform is verified by our team to ensure our highest quality standards. Not happy? We offer a 30-day refund guarantee.',
+    },
+    {
+      name: 'Efficient Management',
+      Icon: CheckSquareIcon,
+      description:
+        "We've pledged 1% of sales to the preservation and restoration of the natural environment.",
+    },
+  ];
   return (
     <>
-      <MaxWidthWrapper>
-        <div className='py-24  mx-auto text-center flex flex-col items-center max-w-3xl '>
+      <MaxWidthWrapper className=''>
+        <div className='py-28  mx-auto text-center flex flex-col items-center justify-center  max-w-3xl '>
           <h1 className='text-4xl font-bold tracking-tight text-blue-100  sm:text-6xl'>
             Elevate Your <span className='text-blue-500'>Fitness</span> Business
           </h1>
@@ -27,8 +48,37 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <TrainerTestimonials />
       </MaxWidthWrapper>
+      <section>
+        <MaxWidthWrapper className='py-28'>
+          <div className='w-full pb-28 px-4  text-center '>
+            <div className='grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0'>
+              {perks.map((perk) => (
+                <div
+                  key={perk.name}
+                  className='text-center md:flex md:items-start md:text-left lg:block lg:text-center'
+                >
+                  <div className='md:flex-shrink-0 flex justify-center'>
+                    <div className='h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900'>
+                      {<perk.Icon className='w-1/2 h-1/2' />}
+                    </div>
+                  </div>
+
+                  <div className='mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6'>
+                    <h3 className='text-base font-medium text-gray-100'>
+                      {perk.name}
+                    </h3>
+                    <p className='mt-3 text-sm text-muted-foreground'>
+                      {perk.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <TrainerTestimonials />
+        </MaxWidthWrapper>
+      </section>
     </>
   );
 }

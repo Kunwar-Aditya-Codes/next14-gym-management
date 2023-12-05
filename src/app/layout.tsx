@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../globals.css';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,8 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className="bg-[url('/hero.jpg')] bg-cover bg-black bg-blend-color bg-opacity-95 bg-no-repeat bg-center min-h-screen">
-        {children}
+      <body className="bg-[url('/hero.jpg')] bg-cover bg-black bg-blend-color bg-opacity-[0.97] bg-no-repeat bg-center bg-fixed">
+        <main className='relative flex flex-col min-h-screen'>
+          <div className='flex-grow flex-1'>{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );
