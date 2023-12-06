@@ -27,21 +27,25 @@ export default function Home() {
   ];
   return (
     <>
-      <MaxWidthWrapper className=''>
-        <div className='py-28  mx-auto text-center flex flex-col items-center justify-center  max-w-3xl '>
-          <h1 className='text-4xl font-bold tracking-tight text-blue-100  sm:text-6xl'>
-            Elevate Your <span className='text-blue-500'>Fitness</span> Business
-          </h1>
-          <p className='mt-6 text-lg max-w-prose text-muted-foreground '>
-            Streamline Schedules, Boost Client Success: Unleash the Power of
-            Effortless Gym Trainer Management!
-          </p>
-
+      <MaxWidthWrapper className='h-[80vh]   '>
+        <div className='py-28 h-full  mx-auto text-center flex flex-col items-center justify-evenly   max-w-3xl '>
+          <div className='flex flex-col items-center'>
+            <h1 className='text-4xl font-bold tracking-tight text-rose-100  sm:text-6xl'>
+              Elevate Your <span className='text-rose-500'>Fitness</span>{' '}
+              Business
+            </h1>
+            <p className='mt-6 text-lg max-w-prose text-muted-foreground '>
+              Streamline Schedules, Boost Client Success: Unleash the Power of
+              Effortless Gym Trainer Management!
+            </p>
+          </div>
           <div className='flex flex-col sm:flex-row gap-4 mt-6'>
             <Link
               href={'/sign-up'}
               className={buttonVariants({
-                variant: 'secondary',
+                variant: 'default',
+                className:
+                  'rounded-s-full rounded-e-full py-6 px-6 bg-transparent border hover:bg-zinc-950',
               })}
             >
               Get Started &rarr;
@@ -49,9 +53,9 @@ export default function Home() {
           </div>
         </div>
       </MaxWidthWrapper>
-      <section>
-        <MaxWidthWrapper className='py-28'>
-          <div className='w-full pb-28 px-4  text-center '>
+      <section className=''>
+        <MaxWidthWrapper className=' '>
+          <div className='w-full py-28 px-4 border-t border-zinc-900  text-center '>
             <div className='grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0'>
               {perks.map((perk) => (
                 <div
@@ -59,7 +63,7 @@ export default function Home() {
                   className='text-center md:flex md:items-start md:text-left lg:block lg:text-center'
                 >
                   <div className='md:flex-shrink-0 flex justify-center'>
-                    <div className='h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900'>
+                    <div className='h-16 w-16 flex items-center justify-center rounded-full bg-gradient-to-br from-rose-200 to-rose-50 text-rose-600'>
                       {<perk.Icon className='w-1/2 h-1/2' />}
                     </div>
                   </div>
