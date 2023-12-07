@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 import Footer from '@/components/Footer';
 import { ClerkProvider } from '@clerk/nextjs';
+import { dark, neobrutalism } from '@clerk/themes';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <ClerkProvider>
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+          variables: {
+            colorPrimary: '#f43f5e',
+            colorBackground: '#09090b',
+            fontSize: '1rem',
+          },
+        }}
+      >
         <body className="bg-[url('/hero.jpg')] bg-cover bg-black bg-blend-color bg-opacity-[0.97] bg-no-repeat bg-center bg-fixed">
           <main className='relative flex flex-col min-h-screen h-screen'>
             <div className='flex-grow flex-1 '>{children}</div>
