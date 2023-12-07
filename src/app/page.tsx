@@ -27,7 +27,7 @@ export default function Home() {
   ];
   return (
     <>
-      <MaxWidthWrapper className='h-[80vh]   '>
+      <MaxWidthWrapper className='h-[80vh]'>
         <div className='py-28 h-full  mx-auto text-center flex flex-col items-center justify-evenly   max-w-3xl '>
           <div className='flex flex-col items-center'>
             <h1 className='text-4xl font-bold tracking-tight text-rose-100  sm:text-6xl'>
