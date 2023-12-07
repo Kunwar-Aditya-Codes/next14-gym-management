@@ -21,16 +21,14 @@ export default function RootLayout({
     <html lang='en'>
       <ClerkProvider
         appearance={{
-          baseTheme: dark,
           variables: {
             colorPrimary: '#f43f5e',
-            colorBackground: '#09090b',
             fontSize: '1rem',
           },
         }}
       >
-        <body className="bg-[url('/hero.jpg')] bg-cover bg-black bg-blend-color bg-opacity-[0.97] bg-no-repeat bg-center bg-fixed">
-          <main className='relative flex flex-col min-h-screen h-screen'>
+        <body className='bg-gray-100'>
+          <main className='relative flex flex-col min-h-screen h-screen '>
             <div className='flex-grow flex-1 '>{children}</div>
             <Footer />
           </main>

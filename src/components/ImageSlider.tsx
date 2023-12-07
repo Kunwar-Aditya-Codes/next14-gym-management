@@ -14,35 +14,35 @@ const ImageSlider = () => {
   const testimonials = [
     {
       name: 'Alice Johnson',
-      image: '/person-2.svg',
+      image: '/person-2.png',
       review:
         'Absolutely fantastic service! The team went above and beyond to meet my expectations. I highly recommend their expertise.',
       date: '2023-01-15',
     },
     {
       name: 'Bob Smith',
-      image: '/person-1.svg',
+      image: '/person-1.png',
       review:
         'I was impressed with the quality of the product and the quick delivery. Excellent customer support too. Will definitely buy again!',
       date: '2023-02-28',
     },
     {
       name: 'Charlie Davis',
-      image: '/person-3.svg',
+      image: '/person-3.png',
       review:
         "The professionalism and attention to detail were outstanding. I couldn't be happier with the results. Thank you for a job well done.",
       date: '2023-03-12',
     },
     {
       name: 'Diana Rodriguez',
-      image: '/person-2.svg',
+      image: '/person-2.png',
       review:
         "I've had a great experience working with this team. They are responsive, creative, and delivered a top-notch solution. Highly recommended!",
       date: '2023-04-05',
     },
     {
       name: 'Evan Williams',
-      image: '/person-1.svg',
+      image: '/person-1.png',
       review:
         'The product exceeded my expectations. The attention to detail and craftsmanship are commendable. Truly satisfied with my purchase.',
       date: '2023-05-20',
@@ -121,25 +121,24 @@ const ImageSlider = () => {
         {testimonials?.map((testimonial, i) => (
           <SwiperSlide
             key={i}
-            className='-z-10 relative  p-4 rounded-xl  border-[0.05px] border-zinc-800'
+            className='-z-10 relative  p-4 rounded-xl  border-[0.05px] border-zinc-300 '
           >
             <div className='flex flex-col lg:max-h-[12rem] lg:h-[12rem]  space-y-4 md:space-y-0  md:flex-row-reverse'>
               <div className='flex-grow lg:flex-[0.3]  w-full'>
                 <Image
-                  width={5}
-                  height={5}
-                  className='aspect-square bg-white/50 max-w-[250px] max-h-[250px] w-full h-full object-cover object-top rounded-xl'
+                  width={1000}
+                  height={1000}
+                  className='aspect-square max-w-[250px] max-h-[250px] w-full h-full object-cover object-top rounded-xl mx-auto'
                   loading='eager'
-                  priority
                   alt='testimonial image'
                   src={testimonial?.image}
                 />
               </div>
               <div className='flex-auto lg:flex-[0.7] md:px-4 text-justify'>
-                <h1 className='text-xl text-center md:text-left md:text-2xl font-medium'>
+                <h1 className='text-xl text-center text-zinc-800 md:text-left md:text-2xl font-medium'>
                   {testimonial?.name}
                 </h1>
-                <p className='text-sm mt-1 text-zinc-500 font-bold text-center md:text-left'>
+                <p className='text-sm mt-1 text-muted-foreground font-bold text-center md:text-left'>
                   {testimonial?.date}
                 </p>
                 <p className='mt-6 md:text-sm  italic md:pr-16'>
