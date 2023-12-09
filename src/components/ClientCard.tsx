@@ -9,7 +9,7 @@ interface ClientCardProps {
 
 const ClientCard = ({ name, url }: ClientCardProps) => {
   return (
-    <div className=' transition py-4  '>
+    <div className='hover:ring-2 ring-rose-500 rounded-lg border-zinc-300 cursor-pointer border py-4 pl-4 '>
       <div className='flex items-center gap-4'>
         <div>
           <Image

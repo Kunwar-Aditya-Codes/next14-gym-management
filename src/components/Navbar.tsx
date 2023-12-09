@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import MaxWidthWrapper from './MaxWidthWrapper';
 import Image from 'next/image';
-import { currentUser, UserButton } from '@clerk/nextjs';
+import { UserButton, currentUser } from '@clerk/nextjs';
 import { buttonVariants } from './ui/button';
 
 const Navbar = async () => {
@@ -43,7 +43,40 @@ const Navbar = async () => {
                   )}
 
                   {user ? (
-                    <UserButton />
+                    <>
+                      <div className='ml-4 flow-root lg:ml-6'>
+                        <Link
+                          href={`/dashboard`}
+                          className={buttonVariants({
+                            variant: 'ghost',
+                          })}
+                        >
+                          Clients
+                        </Link>
+                      </div>
+                      <span
+                        className='h-6 w-px bg-gray-200'
+                        aria-hidden='true'
+                      />
+                      <div className='ml-4 flow-root lg:ml-6'>
+                        <Link
+                          href={`/dashboard/exercise`}
+                          className={buttonVariants({
+                            variant: 'ghost',
+                          })}
+                        >
+                          Excercise
+                        </Link>
+                      </div>
+                    </>
+                  ) : null}
+
+                  {user ? (
+                    <span className='h-6 w-px bg-gray-200' aria-hidden='true' />
+                  ) : null}
+
+                  {user ? (
+                    <UserButton afterSignOutUrl={'/sign-in'} />
                   ) : (
                     <Link
                       href={'sign-up'}
