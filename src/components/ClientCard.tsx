@@ -9,7 +9,7 @@ interface ClientCardProps {
 
 const ClientCard = ({ name, url }: ClientCardProps) => {
   return (
-    <div className=' transition py-4 mt-4 border-b border-zinc-200'>
+    <div className=' transition py-4  '>
       <div className='flex items-center gap-4'>
         <div>
           <Image
@@ -20,7 +20,7 @@ const ClientCard = ({ name, url }: ClientCardProps) => {
             alt='client profile pic'
           />
         </div>
-        <h1 className=' tracking-wide text-zinc-700 '>{name}</h1>
+        <h1 className='uppercase tracking-wider text-zinc-700 '>{name}</h1>
       </div>
     </div>
   );
