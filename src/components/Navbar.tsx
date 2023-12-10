@@ -3,6 +3,7 @@ import MaxWidthWrapper from './MaxWidthWrapper';
 import Image from 'next/image';
 import { UserButton, currentUser } from '@clerk/nextjs';
 import { buttonVariants } from './ui/button';
+import { dark, shadesOfPurple, neobrutalism } from '@clerk/themes';
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -55,7 +56,7 @@ const Navbar = async () => {
                         </Link>
                       </div>
                       <span
-                        className='h-6 w-px bg-gray-200'
+                        className='h-6 w-px bg-gray-700'
                         aria-hidden='true'
                       />
                       <div className='ml-4 flow-root lg:ml-6'>
@@ -72,11 +73,19 @@ const Navbar = async () => {
                   ) : null}
 
                   {user ? (
-                    <span className='h-6 w-px bg-gray-200' aria-hidden='true' />
+                    <span className='h-6 w-px bg-gray-700' aria-hidden='true' />
                   ) : null}
 
                   {user ? (
-                    <UserButton afterSignOutUrl={'/sign-in'} />
+                    <UserButton
+                      appearance={{
+                        baseTheme: dark,
+                        variables: {
+                          colorBackground: '#03030f',
+                        },
+                      }}
+                      afterSignOutUrl={'/sign-in'}
+                    />
                   ) : (
                     <Link
                       href={'sign-up'}
