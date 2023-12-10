@@ -6,7 +6,7 @@ const AddClientDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={'ghost'} className={'border border-zinc-300'}>
+        <Button variant={'ghost'} className={'border border-zinc-700'}>
           New Client
         </Button>
       </DialogTrigger>

@@ -8,16 +8,16 @@ const Navbar = async () => {
   const user = await currentUser();
 
   return (
-    <div className='sticky z-50 top-0 inset-x-0 h-16'>
-      <header className='relative bg-white '>
+    <div className='sticky z-50 top-0 inset-x-0 h-16 '>
+      <header className='relative bg-[#030712] '>
         <MaxWidthWrapper>
-          <div className='border-b border-gray-200'>
+          <div className='border-b border-zinc-700'>
             <div className='flex h-16 items-center'>
-              <div className='ml-4 flex lg:ml-0'>
-                <Link href={'/'} className=''>
+              <div className='ml-4 flex lg:ml-0 '>
+                <Link href={'/'} className='m'>
                   <Image
                     src={'/logo.png'}
-                    className='w-12 h-12'
+                    className='w-12 h-12 rounded-full '
                     width={500}
                     height={500}
                     alt='dumbbelle logo'
@@ -39,7 +39,7 @@ const Navbar = async () => {
                   )}
 
                   {user ? null : (
-                    <span className='h-6 w-px bg-gray-200' aria-hidden='true' />
+                    <span className='h-6 w-px bg-zinc-700' aria-hidden='true' />
                   )}
 
                   {user ? (

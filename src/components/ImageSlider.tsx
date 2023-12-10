@@ -121,7 +121,7 @@ const ImageSlider = () => {
         {testimonials?.map((testimonial, i) => (
           <SwiperSlide
             key={i}
-            className='-z-10 relative  p-4 rounded-xl  border-[0.05px] border-zinc-300 '
+            className='-z-10 relative  p-4 rounded-xl  border-[0.05px] border-zinc-700 '
           >
             <div className='flex flex-col lg:max-h-[12rem] lg:h-[12rem]  space-y-4 md:space-y-0  md:flex-row-reverse'>
               <div className='flex-grow lg:flex-[0.3]  w-full'>
@@ -135,7 +135,7 @@ const ImageSlider = () => {
                 />
               </div>
               <div className='flex-auto lg:flex-[0.7] md:px-4 text-justify'>
-                <h1 className='text-xl text-center text-zinc-800 md:text-left md:text-2xl font-medium'>
+                <h1 className='text-xl text-center  md:text-left md:text-2xl font-medium'>
                   {testimonial?.name}
                 </h1>
                 <p className='text-sm mt-1 text-muted-foreground font-bold text-center md:text-left'>

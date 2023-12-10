@@ -10,11 +10,9 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
@@ -22,12 +20,13 @@ const ClientForm = () => {
   const form = useForm<TClientValidator>({
     defaultValues: {
       clientName: '',
-      age: 19,
+      age: '0',
       email: '',
       height: 0,
       phoneNumber: '',
       weight: 0,
     },
+
     resolver: zodResolver(ClientValidator),
   });
 
@@ -37,7 +36,7 @@ const ClientForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
         <FormField
           control={form.control}
           name='clientName'
@@ -45,9 +44,12 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder='shadcn' {...field} />
+                <Input
+                  placeholder='John Doe'
+                  {...field}
+                  className=' focus-visible:ring-indigo-500 '
+                />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -58,9 +60,8 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Age</FormLabel>
               <FormControl>
-                <Input placeholder='19' {...field} />
+                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -71,9 +72,8 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='example@email.com' {...field} />
+                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -84,9 +84,8 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Height (cm)</FormLabel>
               <FormControl>
-                <Input placeholder='165' {...field} />
+                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -97,9 +96,8 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Weight (kg)</FormLabel>
               <FormControl>
-                <Input placeholder='45' {...field} />
+                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -110,9 +108,8 @@ const ClientForm = () => {
             <FormItem>
               <FormLabel>Contact</FormLabel>
               <FormControl>
-                <Input placeholder='1234567981' {...field} />
+                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />

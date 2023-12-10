@@ -30,8 +30,8 @@ export default function Home() {
       <MaxWidthWrapper className='h-[80vh]'>
         <div className='py-28 h-full  mx-auto text-center flex flex-col items-center justify-evenly   max-w-3xl '>
           <div className='flex flex-col items-center'>
-            <h1 className='text-4xl font-bold tracking-tight text-zinc-800  sm:text-6xl'>
-              Elevate Your <span className='text-rose-500'>Fitness</span>{' '}
+            <h1 className='text-4xl font-bold tracking-tight text-muted-foreground  sm:text-6xl'>
+              Elevate Your <span className='text-violet-500'>Fitness</span>{' '}
               Business
             </h1>
             <p className='mt-6 text-lg max-w-prose text-muted-foreground '>
@@ -44,8 +44,7 @@ export default function Home() {
               href={'/sign-up'}
               className={buttonVariants({
                 variant: 'default',
-                className:
-                  'rounded-s-full rounded-e-full py-6 px-6 bg-zinc-800 hover:bg-zinc-950',
+                className: 'rounded-s-full rounded-e-full py-6 px-6 ',
               })}
             >
               Get Started &rarr;
@@ -55,7 +54,7 @@ export default function Home() {
       </MaxWidthWrapper>
       <section className=''>
         <MaxWidthWrapper className=' '>
-          <div className='w-full py-28 px-4 border-t border-zinc-300  text-center '>
+          <div className='w-full py-28 px-4 border-t border-zinc-700  text-center '>
             <div className='grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-0'>
               {perks.map((perk) => (
                 <div
@@ -63,15 +62,13 @@ export default function Home() {
                   className='text-center md:flex md:items-start md:text-left lg:block lg:text-center'
                 >
                   <div className='md:flex-shrink-0 flex justify-center'>
-                    <div className='h-16 w-16 flex items-center justify-center rounded-full bg-gradient-to-br from-rose-300 to-rose-100 text-rose-600'>
-                      {<perk.Icon className='w-1/2 h-1/2' />}
+                    <div className='h-16 w-16 flex items-center justify-center rounded-full border border-violet-500 '>
+                      {<perk.Icon className='w-1/2 h-1/2 text-violet-500' />}
                     </div>
                   </div>
 
                   <div className='mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6'>
-                    <h3 className='text-base font-medium text-zinc-800'>
-                      {perk.name}
-                    </h3>
+                    <h3 className='text-base font-medium '>{perk.name}</h3>
                     <p className='mt-3 text-sm text-muted-foreground'>
                       {perk.description}
                     </p>

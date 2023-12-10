@@ -1,5 +1,5 @@
 import { ClientValidator } from '@/lib/validators/client-validator';
-import { privateProcedure, publicProcedure, router } from './trpc';
+import { privateProcedure, router } from './trpc';
 
 export const adminRouter = router({
   createClient: privateProcedure

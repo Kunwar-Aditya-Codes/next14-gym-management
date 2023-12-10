@@ -20,12 +20,15 @@ export default function RootLayout({
       <ClerkProvider
         appearance={{
           variables: {
-            colorPrimary: '#f43f5e',
+            colorPrimary: '#6d28d9',
             fontSize: '1rem',
+            colorBackground: 'transparent',
+            colorText: '#f9fafb',
+            colorAlphaShade: '#6d28d9',
           },
         }}
       >
-        <body className='bg-gray-100'>
+        <body className='text-[#f9fafb]'>
           <main className='relative flex flex-col min-h-screen h-screen '>
             <Providers>
               <Navbar />
