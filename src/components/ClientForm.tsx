@@ -7,26 +7,16 @@ import {
 } from '@/lib/validators/client-validator';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
 
 const ClientForm = () => {
-  const form = useForm<TClientValidator>({
-    defaultValues: {
-      clientName: '',
-      age: '0',
-      email: '',
-      height: 0,
-      phoneNumber: '',
-      weight: 0,
-    },
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TClientValidator>({
     resolver: zodResolver(ClientValidator),
   });
 
@@ -35,87 +25,99 @@ const ClientForm = () => {
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-        <FormField
-          control={form.control}
-          name='clientName'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder='John Doe'
-                  {...field}
-                  className=' focus-visible:ring-indigo-500 '
-                />
-              </FormControl>
-            </FormItem>
-          )}
+    <form onSubmit={handleSubmit(onSubmit)} className='grid gap-y-4'>
+      <div className='grid gap-y-2'>
+        <Label htmlFor='clientName'>Client name</Label>
+        <Input
+          id='clientName'
+          className={cn({
+            'focus-visible:ring-red-500': errors?.clientName,
+          })}
+          {...register('clientName')}
         />
-        <FormField
-          control={form.control}
-          name='age'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Age</FormLabel>
-              <FormControl>
-                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
-              </FormControl>
-            </FormItem>
-          )}
+        {errors?.clientName && (
+          <p className='text-xs text-red-500'>{errors.clientName.message}</p>
+        )}
+      </div>
+      <div className='grid gap-y-2'>
+        <Label htmlFor='email'>Email</Label>
+        <Input
+          id='email'
+          className={cn({
+            'focus-visible:ring-red-500': errors.email,
+          })}
+          {...register('email')}
         />
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
-              </FormControl>
-            </FormItem>
-          )}
+        {errors?.email && (
+          <p className='text-xs text-red-500'>{errors.email.message}</p>
+        )}
+      </div>
+      <div className='grid gap-y-2'>
+        <Label htmlFor='age'>Age</Label>
+        <Input
+          id='age'
+          defaultValue={0}
+          className={cn({
+            'focus-visible:ring-red-500': errors.age,
+          })}
+          {...register('age', {
+            setValueAs: (v) => parseInt(v),
+          })}
         />
-        <FormField
-          control={form.control}
-          name='height'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Height (cm)</FormLabel>
-              <FormControl>
-                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
-              </FormControl>
-            </FormItem>
-          )}
+        {errors?.age && (
+          <p className='text-xs text-red-500'>{errors.age.message}</p>
+        )}
+      </div>
+
+      <div className='grid gap-y-2'>
+        <Label htmlFor='height'>Height</Label>
+        <Input
+          defaultValue={0}
+          id='height'
+          className={cn({
+            'focus-visible:ring-red-500': errors.height,
+          })}
+          {...register('height', {
+            setValueAs: (v) => parseInt(v),
+          })}
         />
-        <FormField
-          control={form.control}
-          name='weight'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Weight (kg)</FormLabel>
-              <FormControl>
-                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
-              </FormControl>
-            </FormItem>
-          )}
+        {errors?.height && (
+          <p className='text-xs text-red-500'>{errors.height.message}</p>
+        )}
+      </div>
+
+      <div className='grid gap-y-2'>
+        <Label htmlFor='weight'>Weight</Label>
+        <Input
+          id='weight'
+          defaultValue={0}
+          className={cn({
+            'focus-visible:ring-red-500': errors.weight,
+          })}
+          {...register('weight', {
+            setValueAs: (v) => parseInt(v),
+          })}
         />
-        <FormField
-          control={form.control}
-          name='phoneNumber'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Contact</FormLabel>
-              <FormControl>
-                <Input {...field} className=' focus-visible:ring-indigo-500 ' />
-              </FormControl>
-            </FormItem>
-          )}
+        {errors?.weight && (
+          <p className='text-xs text-red-500'>{errors.weight.message}</p>
+        )}
+      </div>
+
+      <div className='grid gap-y-2'>
+        <Label htmlFor='phoneNumber'>Phone</Label>
+        <Input
+          id='phoneNumber'
+          className={cn({
+            'focus-visible:ring-red-500': errors.phoneNumber,
+          })}
+          {...register('phoneNumber')}
         />
-        <Button type='submit'>Submit</Button>
-      </form>
-    </Form>
+        {errors?.phoneNumber && (
+          <p className='text-xs text-red-500'>{errors.phoneNumber.message}</p>
+        )}
+      </div>
+      <Button type='submit'>Submit</Button>
+    </form>
   );
 };
 export default ClientForm;
