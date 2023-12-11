@@ -1,6 +1,6 @@
-import { TRPCError, initTRPC } from '@trpc/server';
-import type { Context } from '@/clerk/context';
+import { initTRPC, TRPCError } from '@trpc/server';
 import superjson from 'superjson';
+import { Context } from './context';
 
 const t = initTRPC.context<Context>().create({
   transformer: superjson,
@@ -9,15 +9,13 @@ const t = initTRPC.context<Context>().create({
   },
 });
 
-const middleware = t.middleware;
-
-const isAuth = middleware(async ({ ctx, next }) => {
-  if (!ctx.auth.userId) {
+const isAuth = t.middleware(({ next, ctx }) => {
+  if (!ctx.userId) {
     throw new TRPCError({ code: 'UNAUTHORIZED' });
   }
   return next({
     ctx: {
-      user: ctx.auth.user,
+      auth: ctx.userId,
     },
   });
 });

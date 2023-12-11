@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Client {
-  userId      String @unique
+  userId      String
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   email       String @unique
   clientName  String
   age         Int
   height      Float
   weight      Float
-  phoneNumber Int
+  phoneNumber String @unique
 }

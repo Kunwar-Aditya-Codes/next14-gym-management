@@ -1,6 +1,7 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
+import { useToast } from '@/components/ui/use-toast';
 import {
   ClientValidator,
   TClientValidator,
@@ -10,6 +11,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
+import { trpc } from '@/trpc/client';
+import { Loader2 } from 'lucide-react';
 
 const ClientForm = () => {
   const {
@@ -20,8 +23,22 @@ const ClientForm = () => {
     resolver: zodResolver(ClientValidator),
   });
 
+  const { toast } = useToast();
+
+  const { mutate: addClient, isLoading } = trpc.admin.createClient.useMutation({
+    onSuccess: ({ success }) => {
+      if (success) {
+        toast({
+          description: 'New client added successfully!',
+        });
+      }
+    },
+  });
+
   const onSubmit = (values: TClientValidator) => {
-    console.log(values);
+    addClient({
+      ...values,
+    });
   };
 
   return (
@@ -116,7 +133,10 @@ const ClientForm = () => {
           <p className='text-xs text-red-500'>{errors.phoneNumber.message}</p>
         )}
       </div>
-      <Button type='submit'>Submit</Button>
+      <Button type='submit' disabled={isLoading}>
+        {isLoading ? <Loader2 className='w-4 h-4 animate-spin mr-1.5' /> : null}
+        Submit
+      </Button>
     </form>
   );
 };

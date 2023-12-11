@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import Providers from '@/components/Providers';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -33,6 +34,7 @@ export default function RootLayout({
             <Providers>
               <Navbar />
               <div className='flex-grow flex-1 '>{children}</div>
+              <Toaster />
               <Footer />
             </Providers>
           </main>
