@@ -21,17 +21,17 @@ export const adminRouter = router({
 
       if (validEmail) throw new TRPCError({ code: 'CONFLICT' });
 
-      await db.client.create({
-        data: {
-          age,
-          email,
-          clientName,
-          height,
-          phoneNumber,
-          userId,
-          weight,
-        },
-      });
+      // await db.client.create({
+      //   data: {
+      //     age,
+      //     email,
+      //     clientName,
+      //     height,
+      //     phoneNumber,
+      //     userId,
+      //     weight,
+      //   },
+      // });
 
       return { success: true };
     }),

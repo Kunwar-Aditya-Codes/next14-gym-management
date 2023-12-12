@@ -13,25 +13,34 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { trpc } from '@/trpc/client';
 import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 const ClientForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<TClientValidator>({
     resolver: zodResolver(ClientValidator),
   });
 
-  const { toast } = useToast();
-
   const { mutate: addClient, isLoading } = trpc.admin.createClient.useMutation({
     onSuccess: ({ success }) => {
       if (success) {
-        toast({
-          description: 'New client added successfully!',
+        toast.success('New client added successfully!', {
+          style: {
+            textAlign: 'center',
+          },
         });
+        reset();
       }
+    },
+
+    onError: ({ message }) => {
+      if (message === 'UNAUTHORIZED') toast.error('Sign in to add clients!');
+
+      if (message === 'CONFLICT') toast.error('Email already registered!');
     },
   });
 
