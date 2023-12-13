@@ -1,50 +1,10 @@
 import AddClientDialog from '@/components/AddClientDialog';
-import ClientCard from '@/components/ClientCard';
-
-const fakeClients = [
-  {
-    name: 'Adma George',
-    url: '/download.png',
-  },
-  {
-    name: 'Code George',
-    url: '/download.png',
-  },
-  {
-    name: 'Emma Watson',
-    url: '/download.png',
-  },
-  {
-    name: 'Lia Paul',
-    url: '/download.png',
-  },
-  {
-    name: 'Adma George',
-    url: '/download.png',
-  },
-  {
-    name: 'Code George',
-    url: '/download.png',
-  },
-  {
-    name: 'Emma Watson',
-    url: '/download.png',
-  },
-  {
-    name: 'Lia Paul',
-    url: '/download.png',
-  },
-  {
-    name: 'Emma Watson',
-    url: '/download.png',
-  },
-  {
-    name: 'Lia Paul',
-    url: '/download.png',
-  },
-];
+import ClientList from '@/components/ClientList';
+import { auth } from '@clerk/nextjs';
 
 const page = () => {
+  const { userId } = auth();
+
   return (
     <>
       <div className='rounded-lg shadow flex items-center justify-between  py-3   mt-4 '>
@@ -54,9 +14,7 @@ const page = () => {
         <AddClientDialog />
       </div>
       <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4'>
-        {fakeClients.map((client, i) => (
-          <ClientCard name={client.name} url={client.url} key={i} />
-        ))}
+        <ClientList adminId={userId as string} />
       </div>
     </>
   );
