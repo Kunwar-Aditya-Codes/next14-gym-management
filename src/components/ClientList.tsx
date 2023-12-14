@@ -34,10 +34,10 @@ const ClientList = ({ adminId }: ClientListProps) => {
     <>
       {map.map((client, i) => {
         if (!client) {
-          return <Skeleton className='h-16 w-full rounded-lg' />;
+          return <Skeleton key={i} className='h-16 w-full rounded-lg' />;
         }
 
-        return <ClientCard client={client} />;
+        return <ClientCard key={i} client={client} />;
       })}
     </>
   );

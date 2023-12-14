@@ -5,6 +5,13 @@ import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import Providers from '@/components/Providers';
 import { Toaster } from 'sonner';
+import { Poppins } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const font = Poppins({
+  subsets: ['latin'],
+  weight: ['200', '400', '600', '700', '800'],
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,17 +36,12 @@ export default function RootLayout({
           },
         }}
       >
-        <body className='text-[#f9fafb]'>
+        <body className={cn('text-[#f9fafb]', font.className)}>
           <main className='relative flex flex-col min-h-screen h-screen '>
             <Providers>
               <Navbar />
               <div className='flex-grow flex-1 '>{children}</div>
-              <Toaster
-                position='top-center'
-                richColors
-                theme='dark'
-                
-              />
+              <Toaster position='top-center' richColors theme='dark' />
               <Footer />
             </Providers>
           </main>
