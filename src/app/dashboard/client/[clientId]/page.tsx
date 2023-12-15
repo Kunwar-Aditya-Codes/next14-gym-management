@@ -12,7 +12,7 @@ const page = ({ params }: PageParams) => {
   return (
     <div className='grid w-full h-full py-4'>
       <div className='flex flex-col w-full lg:flex-row lg:items-start gap-6 min-h-[15rem]'>
-        <div className=' bg-[url("/blob.svg")] bg-cover bg-center rounded-[5px] lg:flex-[0.4] flex items-start p-4 h-full'>
+        <div className='bg-[url("/blob.svg")] bg-cover bg-center rounded-[5px] lg:flex-[0.4] flex items-start p-4 h-full'>
           <div className='flex-[0.5]'>
             <Image
               src={'/person-1.png'}

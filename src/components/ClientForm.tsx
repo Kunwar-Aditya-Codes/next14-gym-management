@@ -24,6 +24,8 @@ const ClientForm = () => {
     resolver: zodResolver(ClientValidator),
   });
 
+  const utils = trpc.useUtils();
+
   const { mutate: addClient, isLoading } = trpc.admin.createClient.useMutation({
     onSuccess: ({ success }) => {
       if (success) {
@@ -32,6 +34,7 @@ const ClientForm = () => {
             textAlign: 'center',
           },
         });
+        utils.admin.getClients.invalidate();
         reset();
       }
     },
