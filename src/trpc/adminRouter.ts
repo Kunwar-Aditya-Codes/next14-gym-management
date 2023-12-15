@@ -1,5 +1,5 @@
 import { ClientValidator } from '../lib/validators/client-validator';
-import { privateProcedure, router } from './trpc';
+import { privateProcedure, publicProcedure, router } from './trpc';
 import { db } from '../db';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
@@ -57,6 +57,30 @@ export const adminRouter = router({
 
       return {
         clients,
+        success: true,
+      };
+    }),
+
+  getClientInfo: privateProcedure
+    .input(z.object({ clientId: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const { userId } = ctx;
+
+      const { clientId } = input;
+
+      if (!userId) throw new TRPCError({ code: 'UNAUTHORIZED' });
+
+      const client = await db.client.findFirst({
+        where: {
+          userId,
+          id: clientId,
+        },
+      });
+
+      if (!client) throw new TRPCError({ code: 'NOT_FOUND' });
+
+      return {
+        client,
         success: true,
       };
     }),
