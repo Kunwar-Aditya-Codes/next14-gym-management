@@ -14,14 +14,13 @@ const page = ({ params }: PageParams) => {
     <div className='grid w-full h-full py-4'>
       <div className='flex flex-col w-full lg:flex-row lg:items-start gap-6 min-h-[15rem]'>
         <ClientProfile clientId={clientId} />
-        
+
         <div className='border border-zinc-700 flex items-center justify-center rounded-[5px] lg:flex-[0.6] shadow-xl p-4 h-full'>
           <h1 className='font-bold text-3xl text-muted-foreground'>
             Progress tacking soon!
           </h1>
         </div>
       </div>
-      <div className='border border-zinc-700 rounded-[5px] mt-6'></div>
     </div>
   );
 };

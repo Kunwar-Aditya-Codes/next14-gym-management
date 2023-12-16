@@ -17,7 +17,7 @@ const ClientProfile = ({ clientId }: ClientProfileProps) => {
   const profile = data?.client as ClientInfo;
 
   return (
-    <div className='bg-[url("/blob.svg")] bg-cover bg-center rounded-[5px] lg:flex-[0.4] flex items-start  h-full'>
+    <div className='bg-[url("/card.svg")]  bg-cover bg-no-repeat bg-center rounded-[5px] lg:flex-[0.4] flex items-start  h-full'>
       {isLoading ? (
         <div className='w-full h-full flex items-center justify-center'>
           <Loader2 className='h-6 w-6 animate-spin' />
@@ -25,8 +25,8 @@ const ClientProfile = ({ clientId }: ClientProfileProps) => {
       ) : null}
 
       {profile ? (
-        <div className='flex flex-col lg:flex-row items-center lg:items-start gap-y-4 backdrop-blur-sm rounded-md shadow-md p-4 w-full'>
-          <div className=' w-full lg:w-auto'>
+        <div className='flex flex-col bg-black/10  lg:flex-row items-center lg:items-start gap-y-4 backdrop-blur-[3px] rounded-md shadow-md p-4 w-full lg:gap-x-8 '>
+          <div className='w-full lg:max-w-[8rem] '>
             <Image
               src={'/person-1.png'}
               alt='profile'
@@ -35,14 +35,22 @@ const ClientProfile = ({ clientId }: ClientProfileProps) => {
               className='w-28 h-28 object-cover rounded-full mx-auto'
             />
           </div>
-          <div className='lg:flex-grow-1 p-2 lg:ml-8 space-y-4 text-center lg:text-start w-full lg:w-auto '>
+          <div className='lg:flex-grow-1 p-2 space-y-4 text-center lg:text-start w-full lg:w-auto '>
             <h1 className='text-lg lg:text-4xl font-bold'>
               {profile?.clientName}
             </h1>
-            <p className='text-muted-foreground'>{profile?.email}</p>
-            <p className='text-muted-foreground'>{profile?.age} years</p>
-            <p className='text-muted-foreground'>{profile?.height} cm</p>
-            <p className='text-muted-foreground'>{profile?.weight} kg</p>
+            <p className='text-muted-foreground  rounded-xl'>
+              {profile?.email}
+            </p>
+            <p className='text-muted-foreground  rounded-xl'>
+              {profile?.age} years
+            </p>
+            <p className='text-muted-foreground  rounded-xl'>
+              {profile?.height} cm
+            </p>
+            <p className='text-muted-foreground  rounded-xl'>
+              {profile?.weight} kg
+            </p>
           </div>
         </div>
       ) : null}
