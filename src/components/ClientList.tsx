@@ -18,6 +18,8 @@ const ClientList = ({ adminId }: ClientListProps) => {
     adminId,
   });
 
+  // TODO: Handle no clients
+
   const FALLBACK_LIMIT = 4;
 
   const clients = allClients?.clients;

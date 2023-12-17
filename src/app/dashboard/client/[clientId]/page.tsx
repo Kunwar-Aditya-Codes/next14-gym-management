@@ -1,5 +1,4 @@
 import ClientProfile from '@/components/ClientProfile';
-import Image from 'next/image';
 
 interface PageParams {
   params: {

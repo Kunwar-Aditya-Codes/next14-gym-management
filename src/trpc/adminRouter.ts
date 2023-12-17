@@ -8,7 +8,15 @@ export const adminRouter = router({
   createClient: privateProcedure
     .input(ClientValidator)
     .mutation(async ({ ctx, input }) => {
-      const { age, clientName, email, height, phoneNumber, weight } = input;
+      const {
+        age,
+        clientName,
+        email,
+        height,
+        phoneNumber,
+        weight,
+        profileImage,
+      } = input;
 
       const { userId } = ctx;
 
@@ -31,6 +39,7 @@ export const adminRouter = router({
           phoneNumber,
           userId,
           weight,
+          profileImage,
         },
       });
 
@@ -52,8 +61,6 @@ export const adminRouter = router({
           userId: adminId,
         },
       });
-
-      if (clients.length === 0) throw new TRPCError({ code: 'NOT_FOUND' });
 
       return {
         clients,
