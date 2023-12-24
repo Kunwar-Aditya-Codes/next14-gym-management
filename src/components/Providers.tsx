@@ -6,6 +6,12 @@ import { trpc } from '@/trpc/client';
 import { httpBatchLink } from '@trpc/client';
 import superjson from 'superjson';
 
+export function absoluteUrl(path: string) {
+  if (typeof window !== 'undefined') return path;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}${path}`;
+  return `http://localhost:${process.env.PORT ?? 3000}${path}`;
+}
+
 const Providers = ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(() => new QueryClient());
 
@@ -13,7 +19,7 @@ const Providers = ({ children }: PropsWithChildren) => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `http://localhost:3000/api/trpc`,
+          url: absoluteUrl('/api/trpc'),
           fetch(url, options) {
             return fetch(url, {
               ...options,

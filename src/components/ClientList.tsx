@@ -18,11 +18,13 @@ const ClientList = ({ adminId }: ClientListProps) => {
     adminId,
   });
 
-  // TODO: Handle no clients
-
   const FALLBACK_LIMIT = 4;
 
   const clients = allClients?.clients;
+
+  if (!isLoading && (!clients || clients.length === 0)) {
+    return <div>No clients found.</div>;
+  }
 
   let map: (ClientInfo | null)[] = [];
 

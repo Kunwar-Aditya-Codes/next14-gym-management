@@ -13,21 +13,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from './ui/button';
 import { ArrowRightIcon } from 'lucide-react';
 
+// TODO: fill fields if formdata exists
+
 const ClientBasicDetails = () => {
+  const { setFormData, nextStep, formData } = useFormStateStore();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<TClientValidator>({
     resolver: zodResolver(ClientValidator),
+    defaultValues: formData,
   });
-  const { formData, setFormData, nextStep } = useFormStateStore(); // assuming your useCart hook has a setFormData method
 
   const onSubmit = (data: TClientValidator) => {
     setFormData(data);
     nextStep();
   };
-
   return (
     <form className='grid gap-y-4' onSubmit={handleSubmit(onSubmit)}>
       <div className='grid gap-y-2'>

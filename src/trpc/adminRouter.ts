@@ -1,5 +1,5 @@
 import { ClientValidator } from '../lib/validators/client-validator';
-import { privateProcedure, publicProcedure, router } from './trpc';
+import { privateProcedure, router } from './trpc';
 import { db } from '../db';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
@@ -30,7 +30,7 @@ export const adminRouter = router({
 
       if (validEmail) throw new TRPCError({ code: 'CONFLICT' });
 
-      await db.client.create({
+      const newUser = await db.client.create({
         data: {
           age,
           email,
@@ -43,7 +43,7 @@ export const adminRouter = router({
         },
       });
 
-      return { success: true };
+      return { success: true, newUser };
     }),
 
   getClients: privateProcedure

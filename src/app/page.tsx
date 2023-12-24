@@ -1,8 +1,9 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import TrainerTestimonials from '@/components/TrainerTestimonials';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import { ActivityIcon, SmileIcon, CheckSquareIcon } from 'lucide-react';
+import { auth } from '@clerk/nextjs';
 
 export default function Home() {
   const perks = [
@@ -25,6 +26,8 @@ export default function Home() {
         "We've pledged 1% of sales to the preservation and restoration of the natural environment.",
     },
   ];
+
+  const { userId } = auth();
   return (
     <>
       <MaxWidthWrapper className='h-[80vh]'>
@@ -39,16 +42,29 @@ export default function Home() {
               Effortless Gym Trainer Management!
             </p>
           </div>
+
           <div className='flex flex-col sm:flex-row gap-4 mt-6'>
-            <Link
-              href={'/sign-up'}
-              className={buttonVariants({
-                variant: 'default',
-                className: 'rounded-s-full rounded-e-full py-6 px-6 ',
-              })}
-            >
-              Get Started &rarr;
-            </Link>
+            {!userId ? (
+              <Link
+                href={'/sign-up'}
+                className={buttonVariants({
+                  variant: 'default',
+                  className: 'rounded-s-full rounded-e-full py-6 px-6 ',
+                })}
+              >
+                Get Started &rarr;
+              </Link>
+            ) : (
+              <Link
+                href={'/dashboard'}
+                className={buttonVariants({
+                  variant: 'default',
+                  className: 'rounded-s-full rounded-e-full py-6 px-6 ',
+                })}
+              >
+                Dashboard &rarr;
+              </Link>
+            )}
           </div>
         </div>
       </MaxWidthWrapper>
